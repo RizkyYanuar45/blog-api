@@ -1,10 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
+
 import createPost from "./routes/post.js";
 
 const app = express();
 const port = 3000;
-
+//agar client atau pengguna server dapat mengakses gambar
+app.use(express.static("public/uploads"));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/blog", createPost);
